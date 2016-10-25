@@ -1,0 +1,12 @@
+CREATE DATABASE sahara;
+GRANT ALL PRIVILEGES ON sahara.* TO 'sahara'@'localhost' \
+  IDENTIFIED BY 'SAHARA_DBPASS';
+GRANT ALL PRIVILEGES ON sahara.* TO 'sahara'@'%' \
+  IDENTIFIED BY 'SAHARA_DBPASS';
+
+
+CREATE DATABASE saharadb;
+GRANT ALL PRIVILEGES ON sahara.* TO 'sahara-common'@'localhost' \
+  IDENTIFIED BY 'SAHARA_DBPASS';
+GRANT ALL PRIVILEGES ON sahara.* TO 'sahara-common'@'%' \
+  IDENTIFIED BY 'SAHARA_DBPASS';
