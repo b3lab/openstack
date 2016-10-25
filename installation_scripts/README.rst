@@ -1,6 +1,6 @@
-=================================================================
-================ OPENSTACK INSTALLATION SCRIPTS =================
-=================================================================
+======================================
+=== OPENSTACK INSTALLATION SCRIPTS ===
+======================================
 
 Güncel scriptler Mitaka versiyonu kurulumu yapmaktadır.
 
@@ -21,9 +21,9 @@ Kuruluma başlanmadan önce
    Kurulum adımları root kullanıcısı ile uygulanmalıdır.
 
 
-========================================================================
-========================== BİLİNEN DURUMLAR ============================
-========================================================================
+========================
+=== BİLİNEN DURUMLAR ===
+========================
 
 Ceilometer kurulumunda mongo db kullanıcı oluşturmada hata var. Bu durumda kurulum sonunda mongo db kullanıcısı manuel oluşturulup ceilometer servisleri yeniden başlatılmalıdır.
 
