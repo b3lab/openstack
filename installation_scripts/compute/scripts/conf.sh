@@ -23,6 +23,8 @@ RABBIT_PASS=
 SWIFT_PASS=
 METADATA_SECRET=
 
+# tunnel ip will be used if you choose neutron install with openvswitch
+TUNNEL_IP='<TUNNEL_IP>'
 controller_node_hostname='<controller_node_hostname>'
 controller_node_management_ip='<controller_node_management_ip>'
 
