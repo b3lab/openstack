@@ -18,7 +18,7 @@ sed -i -e "s/MANAGEMENT_IP/$my_management_ip/g" $CONFIG_FILE
 sed -i -e "s/PROVIDER_INTERFACE/$provider_network_interface/g" $CONFIG_FILE
 
 CONFIG_FILE=./conf_files/openvswitch_agent.ini
-sed -i -e "s/MANAGEMENT_IP/$my_management_ip/g" $CONFIG_FILE
+sed -i -e "s/TUNNEL_IP/$TUNNEL_IP/g" $CONFIG_FILE
 
 
 CONFIG_FILE=./conf_files/metadata_agent.ini

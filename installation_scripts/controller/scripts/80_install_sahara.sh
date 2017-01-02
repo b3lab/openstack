@@ -40,7 +40,7 @@ openstack endpoint create --region RegionOne \
 openstack endpoint create --region RegionOne \
   data-processing admin http://$controller_node_hostname:8386/v1.1/%\(tenant_id\)s
 
-apt-get install -y sahara
+apt-get install -y sahara python-saharaclient
 
 
 cp ./conf_files/sahara.conf /etc/sahara/sahara.conf
