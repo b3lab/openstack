@@ -6,4 +6,3 @@ export OS_PASSWORD=
 export OS_AUTH_URL=http://<controller_node_hostname>:35357/v3
 export OS_IDENTITY_API_VERSION=3
 export OS_IMAGE_API_VERSION=2
-

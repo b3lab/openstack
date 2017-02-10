@@ -25,9 +25,16 @@ sed -i -e "s/RABBIT_PASS/$RABBIT_PASS/g" $CONFIG_FILE
 
 mysql -u root -p$DB_PASS < ./sql_scripts/glance.sql
 
-export OS_TOKEN=$ADMIN_TOKEN
-export OS_URL=http://$controller_node_hostname:35357/v3
+
+export OS_PROJECT_DOMAIN_NAME=default
+export OS_USER_DOMAIN_NAME=default
+export OS_PROJECT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=$ADMIN_PASS
+export OS_AUTH_URL=http://$controller_node_hostname:35357/v3
 export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
+
 
 expect -c '
   spawn openstack user create --domain default --password-prompt glance
@@ -45,7 +52,7 @@ openstack endpoint create --region RegionOne image internal http://$controller_n
 openstack endpoint create --region RegionOne image admin http://$controller_node_hostname:9292
 
 
-apt-get install -y glance
+apt install -y glance
 
 cp ./conf_files/glance-api.conf  /etc/glance/glance-api.conf
 chown glance:glance /etc/glance/glance-api.conf

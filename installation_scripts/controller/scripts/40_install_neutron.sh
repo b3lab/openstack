@@ -18,7 +18,7 @@ sed -i -e "s/MANAGEMENT_IP/$my_management_ip/g" $CONFIG_FILE
 sed -i -e "s/PROVIDER_INTERFACE/$provider_network_interface/g" $CONFIG_FILE
 
 CONFIG_FILE=./conf_files/openvswitch_agent.ini
-sed -i -e "s/TUNNEL_IP/$TUNNEL_IP/g" $CONFIG_FILE
+sed -i -e "s/MANAGEMENT_IP/$my_management_ip/g" $CONFIG_FILE
 
 
 CONFIG_FILE=./conf_files/metadata_agent.ini
@@ -28,9 +28,16 @@ sed -i -e "s/METADATA_SECRET/$METADATA_SECRET/g" $CONFIG_FILE
 
 mysql -u root -p$DB_PASS < ./sql_scripts/neutron.sql
 
-export OS_TOKEN=$ADMIN_TOKEN
-export OS_URL=http://$controller_node_hostname:35357/v3
+
+export OS_PROJECT_DOMAIN_NAME=default
+export OS_USER_DOMAIN_NAME=default
+export OS_PROJECT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=$ADMIN_PASS
+export OS_AUTH_URL=http://$controller_node_hostname:35357/v3
 export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
+
 
 expect -c '
   spawn openstack user create --domain default --password-prompt neutron
@@ -47,7 +54,9 @@ openstack endpoint create --region RegionOne network public http://$controller_n
 openstack endpoint create --region RegionOne network internal http://$controller_node_hostname:9696
 openstack endpoint create --region RegionOne network admin http://$controller_node_hostname:9696
 
-echo "Linux Bridge ile kurulum için 1, Openvswitch ile kurulum için 2'yi tıklayınız"
+echo 'Select network method:'
+echo '[1] Linux Bidge '
+echo '[2] Openvswitch '
 read choice
 if [ $choice -eq 1 ]; then
 

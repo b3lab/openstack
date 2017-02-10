@@ -21,6 +21,8 @@ NEUTRON_PASS=
 NOVA_DBPASS=
 NOVA_PASS=
 RABBIT_PASS=
+SAHARA_DBPASS=
+SAHARA_PASS=
 SWIFT_PASS=
 METADATA_SECRET=
 
@@ -29,8 +31,6 @@ my_management_ip='<my_management_ip>'
 
 # we need 2 network interfaces, one for management network second for provider network
 provider_network_interface='<provider_network_interface>'
-# tunnel ip will be used if you choose neutron install with openvswitch
-TUNNEL_IP='<TUNNEL_IP>'
 
 admin_user_pass=
 demo_user_pass=
@@ -59,5 +59,4 @@ SELFSERVICE_NETWORK_GATEWAY=
 # Following options will be set during installation, do not modify
 
 DB_PASS=
-ADMIN_TOKEN=
 

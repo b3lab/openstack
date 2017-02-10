@@ -22,9 +22,14 @@ mongo --host $controller_node_hostname --eval '
   roles: [ "readWrite", "dbAdmin" ]})'
 
 
-export OS_TOKEN=$ADMIN_TOKEN
-export OS_URL=http://$controller_node_hostname:35357/v3
+export OS_PROJECT_DOMAIN_NAME=default
+export OS_USER_DOMAIN_NAME=default
+export OS_PROJECT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=$ADMIN_PASS
+export OS_AUTH_URL=http://$controller_node_hostname:35357/v3
 export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
 
 
 expect -c '
@@ -48,10 +53,15 @@ cp ./conf_files/ceilometer.conf /etc/ceilometer/ceilometer.conf
 chmod 644 /etc/ceilometer/ceilometer.conf
 chown ceilometer:ceilometer /etc/ceilometer/ceilometer.conf
 
+cp ./conf_files/wsgi-ceilometer.conf /etc/apache2/sites-available/ceilometer.conf
+chmod 644 /etc/apache2/sites-available/ceilometer.conf
+
+a2ensite ceilometer
+service apache2 reload
+service apache2 restart
 
 service ceilometer-agent-central restart
 service ceilometer-agent-notification restart
-service ceilometer-api restart
 service ceilometer-collector restart
 
 service glance-registry restart

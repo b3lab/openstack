@@ -16,9 +16,14 @@ sed -i -e "s/RABBIT_PASS/$RABBIT_PASS/g" $CONFIG_FILE
 
 mysql -u root -p$DB_PASS < ./sql_scripts/sahara.sql
 
-export OS_TOKEN=$ADMIN_TOKEN
-export OS_URL=http://$controller_node_hostname:35357/v3
+export OS_PROJECT_DOMAIN_NAME=default
+export OS_USER_DOMAIN_NAME=default
+export OS_PROJECT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=$ADMIN_PASS
+export OS_AUTH_URL=http://$controller_node_hostname:35357/v3
 export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
 
 expect -c '
   spawn openstack user create --domain default --password-prompt sahara
@@ -40,16 +45,13 @@ openstack endpoint create --region RegionOne \
 openstack endpoint create --region RegionOne \
   data-processing admin http://$controller_node_hostname:8386/v1.1/%\(tenant_id\)s
 
-apt-get install -y sahara python-saharaclient
+apt install -y sahara python-saharaclient
 
 
 cp ./conf_files/sahara.conf /etc/sahara/sahara.conf
 chmod 640 /etc/sahara/sahara.conf
 chown root:sahara /etc/sahara/sahara.conf
 
-cp ./conf_files/my.cnf /etc/mysql/my.cnf
-chmod 640 /etc/mysql/my.cnf
-chown root:mysql /etc/mysql/my.cnf
 
 sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head
 
