@@ -47,11 +47,14 @@ openstack endpoint create --region RegionOne network public http://$controller_n
 openstack endpoint create --region RegionOne network internal http://$controller_node_hostname:9696
 openstack endpoint create --region RegionOne network admin http://$controller_node_hostname:9696
 
-echo "Linux Bridge ile kurulum için 1, Openvswitch ile kurulum için 2'yi tıklayınız"
+echo 'Select network method'
+echo  '[1] Linux Bidge '
+echo '[2] Openvswitch '
+
 read choice
 if [ $choice -eq 1 ]; then
 
-	apt-get install -y neutron-server neutron-plugin-ml2 neutron-linuxbridge-agent neutron-l3-agent neutron-dhcp-agent neutron-metadata-agent
+apt-get install -y neutron-server neutron-plugin-ml2 neutron-linuxbridge-agent neutron-l3-agent neutron-dhcp-agent neutron-metadata-agent
 
 	 CONFIG_FILE=./conf_files/dhcp_agent.ini
         sed -i -e "s/INTERFACE_DRIVER/$LINUX_BRIDGE_INTERFACE_DRIVER/g" $CONFIG_FILE
