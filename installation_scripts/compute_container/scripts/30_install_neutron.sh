@@ -9,7 +9,9 @@ sed -i -e "s/CONTROLLER_HOSTNAME/$controller_node_hostname/g" $CONFIG_FILE
 sed -i -e "s/RABBIT_PASS/$RABBIT_PASS/g" $CONFIG_FILE
 sed -i -e "s/NEUTRON_PASS/$NEUTRON_PASS/g" $CONFIG_FILE
 
-echo "Linux Bridge ile kurulum için 1, Openvswitch ile kurulum için 2'yi tıklayınız"
+echo 'Select network method:'
+echo  '[1] Linux Bidge '
+echo '[2] Openvswitch '
 read choice
 if [ $choice -eq 1 ]; then
 
@@ -35,7 +37,7 @@ fi
 if [ $choice -eq 2 ]; then
 	CONFIG_FILE=./conf_files/openvswitch_agent.ini
         sed -i -e "s/TUNNEL_IP/$TUNNEL_IP/g" $CONFIG_FILE
-	 apt-get install -y neutron-openvswitch-agent neutron-plugin-ml2 bridge-utils
+	 apt-get install -y neutron-openvswitch-agent neutron-plugin-ml2
 	
 	cp ./conf_files/neutron.conf /etc/neutron/neutron.conf
         chmod 640 /etc/neutron/neutron.conf
