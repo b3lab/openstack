@@ -5,7 +5,7 @@ set -x
 apt-get install -y software-properties-common
 
 expect -c '
-  spawn add-apt-repository cloud-archive:mitaka
+  spawn add-apt-repository cloud-archive:newton
   expect "to continue or ctrl-c to cancel adding it"
   send "\r";
   interact '

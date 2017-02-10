@@ -2,7 +2,7 @@
 === OPENSTACK INSTALLATION SCRIPTS ===
 ======================================
 
-Güncel scriptler Mitaka versiyonu kurulumu yapmaktadır.
+Güncel scriptler Newton versiyonu kurulumu yapmaktadır.
 
 
 Kuruluma başlanmadan önce
