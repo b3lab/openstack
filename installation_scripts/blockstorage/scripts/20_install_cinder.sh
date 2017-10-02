@@ -12,12 +12,12 @@ sed -i -e "s/MANAGEMENT_IP/$my_management_ip/g" $CONFIG_FILE
 sed -i -e "s/CINDER_PASS/$CINDER_PASS/g" $CONFIG_FILE
 sed -i -e "s/CINDER_DBPASS/$CINDER_DBPASS/g" $CONFIG_FILE
 sed -i -e "s/RABBIT_PASS/$RABBIT_PASS/g" $CONFIG_FILE
-sed -i -e "s/NEUTRON_PASS/$NEUTRON_PASS/g" $CONFIG_FILE
 
 CONFIG_FILE=./conf_files/lvm.conf
 
 # If your storage nodes use LVM on the operating system disk, 
 # you must also add the associated device to the filter at lvm.conf.
+# change this manually for multiple disks
 sed -i -e "s/PHYSICAL_VOLUME/$PHYSICAL_VOLUME/g" $CONFIG_FILE
 
 apt-get install -y lvm2
