@@ -1,0 +1,6 @@
+CREATE DATABASE gnocchi;
+GRANT ALL PRIVILEGES ON gnocchi.* TO 'gnocchi'@'localhost' \
+  IDENTIFIED BY 'GNOCCHI_DBPASS';
+GRANT ALL PRIVILEGES ON gnocchi.* TO 'gnocchi'@'%' \
+  IDENTIFIED BY 'GNOCCHI_DBPASS';
+

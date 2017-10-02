@@ -2,11 +2,11 @@
 
 set -x
 
-apt-get install -y software-properties-common
+apt install -y software-properties-common
 
 
 expect -c '
-  spawn add-apt-repository cloud-archive:newton
+  spawn add-apt-repository cloud-archive:ocata
   expect "to continue or ctrl-c to cancel adding it"
   send "\r";
   interact '

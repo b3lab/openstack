@@ -11,7 +11,7 @@ REPLACEMENT_VALUE=$my_management_ip
 
 sed -i "s/\($TARGET_KEY *= *\).*/\1$REPLACEMENT_VALUE/" $CONFIG_FILE
 
-apt-get install -y mariadb-server python-pymysql
+apt install -y mariadb-server python-pymysql
 
 cp ./conf_files/99-openstack.cnf /etc/mysql/mariadb.conf.d/99-openstack.cnf
 chmod 644 /etc/mysql/mariadb.conf.d/99-openstack.cnf

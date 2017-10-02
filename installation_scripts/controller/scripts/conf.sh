@@ -20,14 +20,22 @@ NEUTRON_DBPASS=
 NEUTRON_PASS=
 NOVA_DBPASS=
 NOVA_PASS=
+PLACEMENT_PASS=
 RABBIT_PASS=
 SAHARA_DBPASS=
 SAHARA_PASS=
 SWIFT_PASS=
+MAGNUM_PASS=
+MAGNUM_DBPASS=
+MAGNUM_DOMAIN_ADMIN_PASS=
+GNOCCHI_PASS=
+GNOCCHI_DBPASS=
+
 METADATA_SECRET=
 
 controller_node_hostname='<controller_node_hostname>'
 my_management_ip='<my_management_ip>'
+my_public_ip='<my_public_ip>'
 
 # we need 2 network interfaces, one for management network second for provider network
 provider_network_interface='<provider_network_interface>'

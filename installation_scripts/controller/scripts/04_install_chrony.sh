@@ -10,7 +10,7 @@ REPLACEMENT_VALUE=$global_ntp_server
 
 sed -i "s/^$TARGET_KEY .*/$TARGET_KEY $REPLACEMENT_VALUE iburst/" $CONFIG_FILE
 
-apt-get install -y chrony
+apt install -y chrony
 
 cp ./conf_files/chrony.conf /etc/chrony/chrony.conf
 chmod 644 /etc/chrony/chrony.conf

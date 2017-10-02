@@ -1,0 +1,6 @@
+CREATE DATABASE magnum;
+GRANT ALL PRIVILEGES ON magnum.* TO 'magnum'@'localhost' \
+  IDENTIFIED BY 'MAGNUM_DBPASS';
+GRANT ALL PRIVILEGES ON magnum.* TO 'magnum'@'%' \
+  IDENTIFIED BY 'MAGNUM_DBPASS';
+

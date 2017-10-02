@@ -45,6 +45,9 @@ openstack endpoint create --region RegionOne \
 openstack endpoint create --region RegionOne \
   data-processing admin http://$controller_node_hostname:8386/v1.1/%\(tenant_id\)s
 
+# 
+# Do not either set up database or create keystone endpoints at this stage!!!
+# 
 apt install -y sahara python-saharaclient
 
 

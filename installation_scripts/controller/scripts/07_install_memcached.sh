@@ -11,7 +11,7 @@ REPLACEMENT_VALUE=$my_management_ip
 sed -i -e "s/HOST_IP/$REPLACEMENT_VALUE/g" $CONFIG_FILE
 
 
-apt-get install -y memcached python-memcache
+apt install -y memcached python-memcache
 cp ./conf_files/memcached.conf /etc/memcached.conf
 chmod 644 /etc/memcached.conf
 
