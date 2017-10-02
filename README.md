@@ -1,5 +1,5 @@
-=================
-=== OpenStack ===
-=================
-
-OpenStack betikleri, kurulum adımları, sık kullanılan komutlar vs. 
+=================  
+=== OpenStack ===  
+=================  
+  
+OpenStack betikleri, kurulum adımları, sık kullanılan komutlar vs.  
